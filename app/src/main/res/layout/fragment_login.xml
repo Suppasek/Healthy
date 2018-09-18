@@ -32,7 +32,7 @@
             tools:layout_editor_absoluteY="42dp" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/login_userid"
             android:layout_width="match_parent"
             android:layout_height="41dp"
             android:drawableLeft="@drawable/ic_action_name"
@@ -43,7 +43,7 @@
             tools:layout_editor_absoluteY="291dp" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/login_password"
             android:layout_width="match_parent"
             android:layout_height="42dp"
             android:drawableLeft="@drawable/ic_action_pass"
@@ -55,7 +55,7 @@
 
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/login_loginbn"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:text="Login"

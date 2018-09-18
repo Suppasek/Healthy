@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:title="BMI"
-        ></Toolbar>
+    <include layout="@layout/toolbar" />
 
 
     <ScrollView
@@ -20,6 +16,7 @@
             android:orientation="vertical">
 
             <EditText
+                android:id="@+id/bmi_cm"
                 android:layout_width="323dp"
                 android:layout_height="51dp"
                 android:layout_gravity="center"
@@ -30,6 +27,7 @@
 
 
             <EditText
+                android:id="@+id/bmi_kg"
                 android:layout_width="323dp"
                 android:layout_height="51dp"
                 android:layout_gravity="center"
@@ -38,11 +36,29 @@
                 android:inputType="number"/>
 
             <Button
-                android:id="@+id/cal_bmi"
+                android:id="@+id/bmi_cal"
                 android:layout_width="326dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:text="CALCULATE" />
+
+            <TextView
+                android:id="@+id/bmi_yourBMI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="40dp"
+                android:visibility="invisible"
+                android:text="Your BMI" />
+
+            <TextView
+                android:id="@+id/bmi_bmi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="40dp"
+                android:visibility="invisible"
+                android:text="" />
 
         </LinearLayout>
     </ScrollView>

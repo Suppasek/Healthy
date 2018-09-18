@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "970876860761",
+    "firebase_url": "https://healthy-168.firebaseio.com",
+    "project_id": "healthy-168",
+    "storage_bucket": "healthy-168.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:970876860761:android:892f158536581bc9",
+        "android_client_info": {
+          "package_name": "com.example.suppasek.healthy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "970876860761-ckf8bbg4kaae0m8utr32h396v5tj9lpt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.suppasek.healthy",
+            "certificate_hash": "3dbb1b8d049cd62f7d78124bf2ba8a3460398d86"
+          }
+        },
+        {
+          "client_id": "970876860761-bt61iun8viud1tq5oanfo9cin33dvins.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeiuEg2wkOaV9MPwxv-VPRk3zwj7X9NZQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "970876860761-bt61iun8viud1tq5oanfo9cin33dvins.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

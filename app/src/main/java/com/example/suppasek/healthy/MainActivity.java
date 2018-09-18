@@ -4,22 +4,37 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
+    FirebaseAuth userAuth;
+    FirebaseUser user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.fragment_login);
         super.onCreate(savedInstanceState);
-        TextView regisButton =  findViewById(R.id.register);
-        regisButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
-                startActivity(intent);
+        setContentView(R.layout.activity_main);
+
+        userAuth = FirebaseAuth.getInstance();
+        user = userAuth.getCurrentUser();
+
+        if(savedInstanceState == null) {
+            if(user.isAnonymous()) {
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.main_view, new LoginFragment()).commit();
             }
-        });
+            else {
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.main_view, new MenuFragment()).commit();
+            }
+        }
 
     }
 }

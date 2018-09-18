@@ -7,12 +7,7 @@
     android:orientation="vertical"
     android:fitsSystemWindows="true">
 
-    <Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:title="Register"
-        ></Toolbar>
+    <include layout="@layout/toolbar" />
 
 
     <ScrollView
@@ -26,30 +21,16 @@
             android:orientation="vertical">
 
             <EditText
+                android:id="@+id/register_email"
                 android:layout_width="323dp"
                 android:layout_height="51dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:drawableLeft="@drawable/ic_action_name"
-                android:hint="@string/user_id" />
+                android:hint="Email" />
 
             <EditText
-                android:layout_width="323dp"
-                android:layout_height="51dp"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:drawableLeft="@drawable/person_name"
-                android:hint="Name" />
-
-            <EditText
-                android:layout_width="323dp"
-                android:layout_height="51dp"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:drawableLeft="@drawable/calendar"
-                android:hint="Age" />
-
-            <EditText
+                android:id="@+id/register_password"
                 android:layout_width="323dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
@@ -58,8 +39,18 @@
                 android:hint="@string/password"
                 android:inputType="textPassword" />
 
+            <EditText
+                android:id="@+id/register_repassword"
+                android:layout_width="323dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:drawableLeft="@drawable/ic_action_pass"
+                android:hint="Re-type Password"
+                android:inputType="textPassword" />
+
             <Button
-                android:id="@+id/button_reg"
+                android:id="@+id/register_regisbtn"
                 android:layout_width="326dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
