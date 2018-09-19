@@ -1,17 +1,16 @@
 package com.example.suppasek.healthy;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
 
 public class MainActivity extends AppCompatActivity {
 
+    FirebaseFirestore mdb;
+    FirebaseFirestoreSettings settings;
     FirebaseAuth userAuth;
     FirebaseUser user;
 
@@ -22,9 +21,11 @@ public class MainActivity extends AppCompatActivity {
 
         userAuth = FirebaseAuth.getInstance();
         user = userAuth.getCurrentUser();
+//        settings = new FirebaseFirestoreSettings.Builder().setPersistenceEnabled(true).build();
+        mdb = FirebaseFirestore.getInstance();
 
         if(savedInstanceState == null) {
-            if(user.isAnonymous()) {
+            if(user == null) {
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.main_view, new LoginFragment()).commit();

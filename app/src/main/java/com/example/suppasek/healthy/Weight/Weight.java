@@ -1,4 +1,4 @@
-package com.example.suppasek.healthy;
+package com.example.suppasek.healthy.Weight;
 
 public class Weight {
 
