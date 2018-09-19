@@ -30,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
                 android:ems="10"
-                android:hint="Date(DD/MM/YY)"
+                android:hint="Date(YY/MM/DD)"
                 android:inputType="date" />
 
             <Button
