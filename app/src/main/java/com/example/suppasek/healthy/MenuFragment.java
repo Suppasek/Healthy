@@ -42,6 +42,7 @@ public class MenuFragment extends Fragment {
         menu = new ArrayList<>();
         menu.add("BMI");
         menu.add("Weight");
+        menu.add("Sleep");
         menu.add("Sign Out");
         ListView menuList = getView().findViewById(R.id.menu_list);
         final ArrayAdapter<String> menuAdapter = new ArrayAdapter<>(
@@ -59,6 +60,10 @@ public class MenuFragment extends Fragment {
                 }
                 else if (menu.get(i).equals("Weight")) {
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new WeightFragment())
+                            .addToBackStack(null).commit();
+                }
+                else if (menu.get(i).equals("Sleep")) {
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new SleepFragment())
                             .addToBackStack(null).commit();
                 }
                 else if (menu.get(i).equals("Sign Out")) {

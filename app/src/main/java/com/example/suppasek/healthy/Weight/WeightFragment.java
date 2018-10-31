@@ -43,8 +43,6 @@ public class WeightFragment extends Fragment {
 
         initDataCall();
         initAddBtn();
-
-
     }
 
     void initDataCall() {
