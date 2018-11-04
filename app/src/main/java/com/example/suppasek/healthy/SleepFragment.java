@@ -42,7 +42,10 @@ public class SleepFragment extends Fragment {
 
         if (bundle != null) {
             Log.wtf("sleep", "toast");
-            Toast.makeText(getActivity(), "complete", Toast.LENGTH_SHORT).show();
+            String isNull = bundle.getString("complete");
+            if (isNull != null) {
+                Toast.makeText(getActivity(), "complete", Toast.LENGTH_SHORT).show();
+            }
             bundle.clear();
         }
 
@@ -56,6 +59,15 @@ public class SleepFragment extends Fragment {
                         .addToBackStack(null).commit();
             }
         });
+
+        Button backBtn = getActivity().findViewById(R.id.sleep_back);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view,new MenuFragment()).commit();
+            }
+        });
+
 
     }
 
@@ -81,5 +93,7 @@ public class SleepFragment extends Fragment {
         sleepList.setAdapter(sleepAdapter);
 
     }
+
+
 
 }

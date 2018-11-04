@@ -16,6 +16,12 @@ import static java.lang.Math.abs;
 
 public class  SleepFormFragment extends Fragment{
 
+    EditText date;
+    EditText sleepHour;
+    EditText wakeHour;
+    EditText sleepMinute;
+    EditText wakeMinute;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -27,17 +33,31 @@ public class  SleepFormFragment extends Fragment{
         super.onActivityCreated(savedInstanceState);
 
         final Bundle bundle = getArguments();
-        Log.wtf("form", "id + " + getArguments().getParcelable("sleep"));
+
+        date = getActivity().findViewById(R.id.fragment_sleep_form_date);
+        sleepHour = getActivity().findViewById(R.id.fragment_sleep_form_sleep_hour);
+        wakeHour = getActivity().findViewById(R.id.fragment_sleep_form_wake_hour);
+        sleepMinute = getActivity().findViewById(R.id.fragment_sleep_form_sleep_minute);
+        wakeMinute = getActivity().findViewById(R.id.fragment_sleep_form_wake_minute);
+
+        if (bundle != null) {
+            Sleep sleep = getArguments().getParcelable("sleep");
+
+            date.setText(sleep.getDate());
+            String[] sleepTime = sleep.getSleepTime().split(":");
+            sleepHour.setText(sleepTime[0]);
+            sleepMinute.setText(sleepTime[1]);
+
+            String[] wakeTime = sleep.getSleepTime().split(":");
+            wakeHour.setText(wakeTime[0]);
+            wakeMinute.setText(wakeTime[1]);
+        }
 
         Button saveBtn = getActivity().findViewById(R.id.fragment_sleep_form_button_accept);
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText date = getActivity().findViewById(R.id.fragment_sleep_form_date);
-                EditText sleepHour = getActivity().findViewById(R.id.fragment_sleep_form_sleep_hour);
-                EditText wakeHour = getActivity().findViewById(R.id.fragment_sleep_form_wake_hour);
-                EditText sleepMinute = getActivity().findViewById(R.id.fragment_sleep_form_sleep_minute);
-                EditText wakeMinute = getActivity().findViewById(R.id.fragment_sleep_form_wake_minute);
+
                 String dateStr = date.getText().toString();
                 String sleepStr = sleepHour.getText().toString() + ":" + sleepMinute.getText().toString();
                 String wakeStr = wakeHour.getText().toString() + ":" + wakeMinute.getText().toString();
@@ -65,6 +85,14 @@ public class  SleepFormFragment extends Fragment{
                 sleepFragment.setArguments(bundle);
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, sleepFragment)
                         .addToBackStack(null).commit();
+            }
+        });
+
+        Button backBtn = getActivity().findViewById(R.id.sleep_form_back);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view,new SleepFragment()).commit();
             }
         });
 

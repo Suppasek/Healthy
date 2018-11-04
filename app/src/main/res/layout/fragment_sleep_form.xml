@@ -77,4 +77,14 @@
         android:inputType="numberDecimal"
         app:layout_constraintStart_toEndOf="@+id/fragment_sleep_form_wake_hour"
         app:layout_constraintTop_toBottomOf="@+id/fragment_sleep_form_sleep_minute" />
+
+    <Button
+        android:id="@+id/sleep_form_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_sleep_form_button_accept" />
 </android.support.constraint.ConstraintLayout>
