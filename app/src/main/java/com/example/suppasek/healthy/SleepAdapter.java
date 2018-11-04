@@ -45,5 +45,9 @@ public class SleepAdapter extends ArrayAdapter<Sleep> {
         return sleepItem;
     }
 
+    @Override
+    public int getPosition(@Nullable Sleep item) {
+        return super.getPosition(item);
+    }
 }
 

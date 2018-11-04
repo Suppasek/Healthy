@@ -7,11 +7,14 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.zip.Inflater;
@@ -20,6 +23,7 @@ import java.util.zip.Inflater;
 public class SleepFragment extends Fragment {
 
     ArrayList<Sleep> sleeps = new ArrayList<>();
+
 
     @Nullable
     @Override
@@ -33,6 +37,14 @@ public class SleepFragment extends Fragment {
 
         Toolbar toolbar = getActivity().findViewById(R.id.toolbar);
         toolbar.setTitle("Sleep");
+
+        Bundle bundle = getArguments();
+
+        if (bundle != null) {
+            Log.wtf("sleep", "toast");
+            Toast.makeText(getActivity(), "complete", Toast.LENGTH_SHORT).show();
+            bundle.clear();
+        }
 
         getData();
 
@@ -53,6 +65,19 @@ public class SleepFragment extends Fragment {
         sleeps = db.getSleepList();
         ListView sleepList = getView().findViewById(R.id.sleep_item_list);
         SleepAdapter sleepAdapter = new SleepAdapter(getActivity(), R.layout.sleep_item, sleeps);
+        sleepList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                SleepFormFragment sleepFormFragment = new SleepFormFragment();
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("sleep", sleeps.get(position));
+                bundle.putString("sleepId", sleeps.get(position).getId());
+                Log.wtf("sleep","size + " + sleeps.size());
+                sleepFormFragment.setArguments(bundle);
+                setArguments(bundle);
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, sleepFormFragment).addToBackStack(null).commit();
+            }
+        });
         sleepList.setAdapter(sleepAdapter);
 
     }

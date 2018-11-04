@@ -42,7 +42,7 @@ public class DBHelper extends SQLiteOpenHelper {
         sqLiteDatabase = this.getWritableDatabase();
 
         Cursor cursor = sqLiteDatabase.query
-                ("sleep", null, null, null, null, null, null);
+                ("sleep", null, null, null, null, null, "date");
 
         if (cursor != null) {
             cursor.moveToFirst();
@@ -50,7 +50,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         while(!cursor.isAfterLast()) {
 
-            Sleep sleep = new Sleep(cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
+            Sleep sleep = new Sleep(String.valueOf(cursor.getInt(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
 
             sleeps.add(sleep);
 
@@ -73,6 +73,22 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put("totalSleep", sleep.getTotalSleepTime());
 
         sqLiteDatabase.insert("sleep", null, values);
+
+        sqLiteDatabase.close();
+    }
+
+    public void updateSleep(Sleep sleep, String ID) {
+        sqLiteDatabase = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put("date", sleep.getDate());
+        values.put("sleepTime", sleep.getSleepTime());
+        values.put("wakeTime", sleep.getWakeTime());
+        values.put("totalSleep", sleep.getTotalSleepTime());
+
+        sqLiteDatabase.update("sleep", values, "id="+ID, null );
+
 
         sqLiteDatabase.close();
     }

@@ -4,11 +4,13 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import static java.lang.Math.abs;
 
@@ -23,6 +25,9 @@ public class  SleepFormFragment extends Fragment{
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        final Bundle bundle = getArguments();
+        Log.wtf("form", "id + " + getArguments().getParcelable("sleep"));
 
         Button saveBtn = getActivity().findViewById(R.id.fragment_sleep_form_button_accept);
         saveBtn.setOnClickListener(new View.OnClickListener() {
@@ -46,10 +51,22 @@ public class  SleepFormFragment extends Fragment{
                 String totalSleep = totalSleepHour.toString() + " : " + totalSleepMinute.toString();
                 Sleep sleep = new Sleep(dateStr, sleepStr, wakeStr, totalSleep);
                 DBHelper dbHelper = new DBHelper(getActivity());
-                dbHelper.addSleep(sleep);
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new SleepFragment())
+
+                if (bundle == null) {
+                    dbHelper.addSleep(sleep);
+                }
+                else {
+                    dbHelper.updateSleep(sleep, bundle.getString("sleepId"));
+                }
+
+                SleepFragment sleepFragment = new SleepFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("complete", "complete");
+                sleepFragment.setArguments(bundle);
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, sleepFragment)
                         .addToBackStack(null).commit();
             }
         });
+
     }
 }
