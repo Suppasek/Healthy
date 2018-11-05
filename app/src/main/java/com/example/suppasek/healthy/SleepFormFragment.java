@@ -48,7 +48,7 @@ public class  SleepFormFragment extends Fragment{
             sleepHour.setText(sleepTime[0]);
             sleepMinute.setText(sleepTime[1]);
 
-            String[] wakeTime = sleep.getSleepTime().split(":");
+            String[] wakeTime = sleep.getWakeTime().split(":");
             wakeHour.setText(wakeTime[0]);
             wakeMinute.setText(wakeTime[1]);
         }
