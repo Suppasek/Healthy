@@ -1,7 +1,5 @@
-package com.example.suppasek.healthy;
+package com.example.suppasek.healthy.Sleep;
 
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,8 +14,14 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.suppasek.healthy.DBHelper;
+import com.example.suppasek.healthy.MenuFragment;
+import com.example.suppasek.healthy.R;
+import com.example.suppasek.healthy.Sleep.Sleep;
+import com.example.suppasek.healthy.Sleep.SleepAdapter;
+import com.example.suppasek.healthy.Sleep.SleepFormFragment;
+
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
 
 public class SleepFragment extends Fragment {
@@ -86,7 +90,6 @@ public class SleepFragment extends Fragment {
                 bundle.putString("sleepId", sleeps.get(position).getId());
                 Log.wtf("sleep","size + " + sleeps.size());
                 sleepFormFragment.setArguments(bundle);
-                setArguments(bundle);
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, sleepFormFragment).addToBackStack(null).commit();
             }
         });

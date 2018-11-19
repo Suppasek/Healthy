@@ -5,8 +5,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.example.suppasek.healthy.Sleep.Sleep;
 
 import java.util.ArrayList;
 
@@ -57,7 +58,7 @@ public class DBHelper extends SQLiteOpenHelper {
             cursor.moveToNext();
         }
 
-        sqLiteDatabase.close();
+         sqLiteDatabase.close();
 
         return sleeps;
     }

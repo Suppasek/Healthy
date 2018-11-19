@@ -1,10 +1,9 @@
-package com.example.suppasek.healthy;
+package com.example.suppasek.healthy.Sleep;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Sleep implements Parcelable {
-
 
     private String id;
     private String date;
@@ -26,6 +25,26 @@ public class Sleep implements Parcelable {
         this.wakeTime = wakeTime;
         this.totalSleepTime = totalSleepTime;
     }
+
+    protected Sleep(Parcel in) {
+        id = in.readString();
+        date = in.readString();
+        sleepTime = in.readString();
+        wakeTime = in.readString();
+        totalSleepTime = in.readString();
+    }
+
+    public static final Creator<Sleep> CREATOR = new Creator<Sleep>() {
+        @Override
+        public Sleep createFromParcel(Parcel in) {
+            return new Sleep(in);
+        }
+
+        @Override
+        public Sleep[] newArray(int size) {
+            return new Sleep[size];
+        }
+    };
 
     public String getDate() {
         return date;
@@ -66,7 +85,11 @@ public class Sleep implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-
+        dest.writeString(id);
+        dest.writeString(date);
+        dest.writeString(sleepTime);
+        dest.writeString(wakeTime);
+        dest.writeString(totalSleepTime);
     }
 
     public String getId() {
